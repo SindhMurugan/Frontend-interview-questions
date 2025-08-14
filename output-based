@@ -1,0 +1,47 @@
+@Component({
+  selector: 'app-demo',
+  template: `
+    <div *ngIf="value$ | async as value">
+      {{ value }}
+    </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class DemoComponent implements OnInit {
+  private subject = new BehaviorSubject<number>(0);
+  value$ = this.subject.asObservable();
+
+  ngOnInit() {
+    setTimeout(() => this.subject.next(1), 0);
+    setTimeout(() => this.subject.next(2), 100);
+  }
+}
+
+
+console.log('Start');
+
+setTimeout(() => {
+  console.log('Timeout');
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log('Promise');
+});
+
+(async () => {
+  console.log('Async Start');
+  await null;
+  console.log('Async End');
+})();
+
+console.log('End');
+
+
+console.log(0)
+console.log(setTimeout(console.log(1), 0))
+console.log(2)
+
+async function processData() {
+    const buffer = await fetch();
+    return buffer.filter().map();
+}
