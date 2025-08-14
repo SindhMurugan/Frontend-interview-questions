@@ -1,0 +1,7 @@
+# GIS & Angular Scenario-based Questions
+
+### 1. How to Load Large GIS Data on the Map  
+### 2. Display Data from Multiple Tables Based on Dropdown Selection using `ngClass`  
+### 3. Dynamic Component with Search Field and Input Field — Show Only Input Field in One Component and Render Entire Component in Another  
+### 4. Implementing a Checkbox in a Dynamic Matrix Table  
+### 5. After User Clicks "Add to Cart", Update Cart List and Show Popup using NgRx — Does `Effects` Modify the State?
