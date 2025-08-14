@@ -1,0 +1,72 @@
+What is TypeScript (TS)?
+What is the use of using a framework?
+Difference between JavaScript and Angular.
+Difference between JavaScript and React.
+Pure and Impure Pipe.
+Encapsulation.
+Directives.
+Host Binding and Host Listening.
+Custom Pipe.
+Reactive vs Template-driven Form.
+Dynamic Component.
+Lifecycle Hooks.
+State Management.
+What is RxJS?
+switchMap, exhaustMap, combineLatest, forkJoin, concatMap, mergeMap.
+Filters.
+Change Detection.
+Dependency Injection.
+Service.
+Difference between injecting service using constructor and inject() method.
+Difference between constructor and OnInit.
+AOT vs JIT compilation.
+Lazy Loading – How to create lazy loading, and how to check whether lazy loading is implemented or not.
+ActivatedRoute.
+Router State.
+Router Guards.
+Resolvers.
+Parent-to-Child data sharing.
+Different methods to share data.
+Custom Directive.
+ViewChild and ContentChild.
+Is it possible to access the directive using ViewChild?
+Signals.
+Subjects.
+Promise vs Observable.
+Debugging an Angular application.
+Changing the port number in Angular.
+Optimizing an Angular application.
+Authentication vs Authorization.
+ngx-translate.
+ngModel.
+Browser Module.
+How many folders does the build output contain?
+How to build the application.
+Payload encryption.
+How to use a private package.
+Use of environment files.
+How many environment files are generated during build.
+Tree Shaking.
+Any built-in methods required for tree shaking.
+Where to mention encryption in payload.
+How to send a token in HTTP requests.
+How to upload a file and what properties you will pass from frontend to backend.
+What is the maximum and minimum build size.
+How TS is rendered in the browser.
+If you convert TS to JS, how do you debug it in the Inspect window?
+Why AOT loads faster.
+Difference between Angular 10 and Angular 19.
+How to install packages in Angular.
+How to check the performance in Angular and what metrics you use.
+type vs union vs interface.
+How you implement signals in Angular.
+Difference between Subject and Observable.
+Cold vs Hot Observables.
+Unicase vs multicase
+subject vs observable
+create observable which pass data to component
+
+
+Unicast vs Multicast.
+
+ReplaySubject.
