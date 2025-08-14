@@ -1,0 +1,36 @@
+# JavaScript Interview Questions
+
+### 1. let, var, const  
+### 2. ES6 Features  
+### 3. Closure and Real-time Use Case  
+### 4. Callback  
+### 5. call, apply, bind  
+### 6. Event Loop  
+### 7. Behind the Scenes of JavaScript  
+### 8. Promise and Methods  
+### 9. String Methods  
+### 10. Hoisting  
+### 11. Event Propagation  
+### 12. Prototype  
+### 13. Polyfills  
+### 14. Is JavaScript sync or async
+### 15. Scope  
+### 16. Call by Value and Call by Reference  
+### 17. Immediately Invoked Function Expression (IIFE)  
+### 18. Spread and Rest Operators  
+### 19. What is JavaScript?  
+### 20. JavaScript: Asynchronous or Synchronous?  
+### 21. Difference between Asynchronous and Synchronous  
+### 22. Geolocation API  
+### 23. Deep Copy and Shallow Copy  
+### 24. Cloning an Object  
+### 25. Why use the `<script>` tag in the body part?  
+### 26. async vs defer in `<script>` tag  
+### 27. Advantages of Using JavaScript without a Framework  
+### 28. Pure and Impure Functions  
+### 29. `this` Keyword  
+### 30. Template Literals  
+### 31. Garbage Collection  
+### 32. How to make JavaScript asynchronous  
+### 33. async and await  and advantage of using it
+### 34. `.then()` method
