@@ -16,5 +16,40 @@
 - Convert array to object  
 - Convert interface to union  
 - Merge an array of objects into a single object  
-- Flatten a nested object into key paths  
+- Flatten a nested object into key paths 
+console.log(output, ";output");
+
+// Expected output format:
+// a -> b -> 1
+// a -> b -> c -> x -> 1
+// a -> b -> c -> y -> 2
+// z -> 1
+
+const sample_input = {
+    a: {
+        b: 1,
+        c: {
+            x: 1,
+            y: 2
+        },
+    },
+    z: 1
+};
+
+function nestedObj(obj, path = '') {
+    if (!obj) return;
+
+    for (let key in obj) {
+        const new_path = path ? path + "->" + key : key;
+
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+            nestedObj(obj[key], new_path);
+        } else {
+            console.log(new_path + "->" + obj[key]);
+        }
+    }
+}
+
+nestedObj(sample_input);
+
  
