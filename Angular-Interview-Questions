@@ -70,3 +70,10 @@ create observable which pass data to component
 Unicast vs Multicast.
 
 ReplaySubject.
+zone.js
+migration
+custom router and named router
+how to create your own custom library
+standalone vs ngModele
+async and await
+
