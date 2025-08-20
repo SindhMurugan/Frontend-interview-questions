@@ -65,10 +65,12 @@ Cold vs Hot Observables.
 Unicase vs multicase
 subject vs observable
 create observable which pass data to component
-
-
+custom pipe sturcture
+custom form controls
+syntax for for loop index
+viewchild vs viewchilders and content childern
+angular new features
 Unicast vs Multicast.
-
 ReplaySubject.
 zone.js
 migration
@@ -76,4 +78,8 @@ custom router and named router
 how to create your own custom library
 standalone vs ngModele
 async and await
+webpack
+access data before hit the router
+migration old version to new
+custom router
 
