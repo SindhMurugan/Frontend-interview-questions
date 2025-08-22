@@ -63,3 +63,15 @@ const arr2 = [
     { id: 2, age: 30 }
 ];
 
+
+
+get the total salaes from all the region and calculate the discound of products
+
+arr =[
+{region:"north" , product:"laptop" ,sales:2000,discound:3},
+{region:"south" , product:"laptop" ,sales:2000,discound:3},
+{region:"east" , product:"mobile" ,sales:2000,discound:3},
+{region:"north" , product:"laptop" ,sales:2000,discound:10},
+{region:"west" , product:"laptop" ,sales:2000,discound:10},
+{region:"north" , product:"mobile" ,sales:2000,discound:3}]
+
