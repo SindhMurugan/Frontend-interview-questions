@@ -75,3 +75,8 @@ arr =[
 {region:"west" , product:"laptop" ,sales:2000,discound:10},
 {region:"north" , product:"mobile" ,sales:2000,discound:3}]
 
+
+output :
+[1,2,3,4,....,10]
+[1,..,4,5,6....100]
+[1,....,98,99,100]
