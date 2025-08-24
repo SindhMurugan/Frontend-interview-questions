@@ -108,4 +108,15 @@ constructor() {
 - Alternative: `KeyValueDiffers`, immutability helpers, or libraries like `immer`.
 
 ---
+## Improved Version of Your Answer
+
+To measure and improve the performance of an Angular application, I usually start with the Console tab, where I check for any error or warning messages. Fixing those ensures the app runs without runtime issues.
+
+Next, I use the Network tab to monitor how many HTTP requests are being made, the response times of APIs, and the size of script bundles. If I see large bundles or slow requests, I work on optimizations like lazy loading or caching.
+
+Then I move to the Performance tab, where I record snapshots while interacting with the app. I check for long JavaScript tasks, dropped frames, and whether the heap memory is cleared properly when I navigate away from a page. If memory isn’t released, it indicates a potential memory leak, which I fix by cleaning up subscriptions and destroying components correctly.
+
+Using Lighthouse, I analyze core web vitals such as First Contentful Paint (FCP), Largest Contentful Paint (LCP), Cumulative Layout Shift (CLS), and Time to Interactive (TTI). These metrics tell me how fast the first element loads, when the main content is visible, and how quickly the app responds to user actions.
+
+By combining Console, Network, Performance, and Lighthouse, I get a complete picture of both runtime errors and user experience, and I apply optimizations wherever needed.
 
