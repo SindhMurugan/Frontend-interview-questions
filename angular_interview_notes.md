@@ -1,288 +1,109 @@
-# Angular Advanced Concepts – Interview Notes
+# Angular  – Interview Notes
 
-## Table of Contents
-- [Injectables: Levels](#injectables-levels)
-- [Async Pipe – Drawbacks](#async-pipe--drawbacks)
-- [Parent Mutation with OnPush](#parent-mutation-with-onpush)
-- [Tokens in Angular](#tokens-in-angular)
-- [HTTP Interceptor & Clone Method](#http-interceptor--clone-method)
-- [Zone.js, OnPush & Manual Change Detection, ngZone](#zonejs-onpush--manual-change-detection-ngzone)
-- [ngZone: Run Outside Angular & Re-Enter](#ngzone-run-outside-angular--re-enter)
-- [Detecting Object Changes & Monitoring Unchanged](#detecting-object-changes--monitoring-unchanged)
-- [Changes Outside Zone](#changes-outside-zone)
-- [JS Comparison Operators Under the Hood](#js-comparison-operators-under-the-hood)
-- [Angular Material: What & Why](#angular-material-what--why)
-- [[1,2] == "1,2" Explanation](#12--12-explanation)
-- [forwardRef & Use Case](#forwardref--use-case)
-- [ViewContainerRef & Use Case](#viewcontainerref--use-case)
-- [APP_INITIALIZER & Use Case](#app_initializer--use-case)
-- [Ivy Engine](#ivy-engine)
-- [Signals, Computed Signals & Deferrable Views](#signals-computed-signals--deferrable-views)
-- [Tracking Changed & Unchanged Objects](#tracking-changed--unchanged-objects)
 
----
 
-## Injectables: Levels
-Angular services can be provided at different levels:
+## why we need framework we can build out application using js right?
+JavaScript is the core language of the web, and yes, we can build applications with plain JavaScript.
+But when applications grow bigger, plain JS becomes difficult to manage because we have to manually handle DOM updates, state management, and routing.
 
-- **root** → Singleton across the app.
-- **platform** → Shared across multiple Angular apps running on the same page.
-- **any** → New instance in each lazy-loaded module.
-- **component providers** → Scoped to component and its children.
+That’s where Angular comes in. Angular is a framework built on top of JavaScript/TypeScript that provides a structured way to build scalable and maintainable applications.
 
-```ts
-@Injectable({ providedIn: 'root' })
-export class UserService {}
-```
+For example:
+
+- Angular uses a component-based architecture, so the code is modular and reusable.
+
+- It provides data binding, which automatically syncs data between the UI and logic, so I don’t have to manually manipulate the DOM.
+
+- Features like dependency injection, routing, form handling, and RxJS integration are built-in, which reduces boilerplate code.
+
+- It also supports TypeScript, which helps catch errors early and makes the application more reliable.
+
+
+
 
 ---
 
-## Async Pipe – Drawbacks
-- Auto-subscribes and unsubscribes to observables.
-- **Drawbacks**:
-  - Multiple async pipes in template → multiple subscriptions.
-  - Limited to template usage (cannot reuse transformed values in TS).
+## Upgrade Angular
+- Check Current and Target Versions – I first check the Angular Update Guide (from Angular’s official site) to understand breaking changes and migration steps between my current version and the target version.
 
-```html
-<!-- Creates 2 subscriptions -->
-<div>{{ user$ | async }}</div>
-<div>{{ user$ | async }}</div>
-```
+- Update Angular CLI & Core – I use Angular CLI commands like ng update @angular/cli @angular/core to upgrade step by step. If I’m multiple versions behind, I upgrade sequentially instead of skipping directly.
 
----
+- Update Dependencies – I run ng update without arguments to see which libraries (RxJS, Angular Material, etc.) need updates. I also handle TypeScript and Node version compatibility.
 
-## Parent Mutation with OnPush
-- With `ChangeDetectionStrategy.OnPush`, Angular checks only when **input reference changes**.
-- Passing object reference → mutating property affects parent too.
+- Run & Fix Lint/Tests – After each step, I run linting and unit tests to ensure the upgrade hasn’t broken existing functionality.
 
-```ts
-@Component({
-  selector: 'child',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `{{ user.first_name }} {{ user.last_name }}`
-})
-export class ChildComponent {
-  @Input() user!: { first_name: string; last_name: string };
-}
+- Handle Breaking Changes – If any deprecated APIs or RxJS operators are used, I refactor them as per the migration guide.
 
-// Parent passes reference
-<child [user]="user"></child>
-
-// If child deletes user.last_name → reflected in parent (same reference).
-```
+- Verify Build & Deployment – Finally, I make sure the app builds successfully and test it in different environments (dev/stage) before releasing.
 
 ---
 
-## Tokens in Angular
-Tokens allow **dependency injection of values** instead of classes.
+## ng serve vs ng-build
+- ng serve is mainly for development.
+  It compiles the application in memory and runs a development server.It supports live reload, so whenever I make changes, the app recompiles automatically. Importantly, ng serve does **not generate build files in the dist/ folder`. It just runs the app locally for testing and debugging.
+- ng build is used for production or deployment.
+  It generates an optimized version of the app in the dist/ folder.
 
-```ts
-export const API_URL = new InjectionToken<string>('API_URL');
 
-@NgModule({
-  providers: [
-    { provide: API_URL, useValue: 'https://api.example.com' }
-  ]
-})
-export class AppModule {}
-
-constructor(@Inject(API_URL) private apiUrl: string) {}
-```
 
 ---
 
-## HTTP Interceptor & Clone Method
-- Interceptors sit between app & backend.
-- `HttpRequest` is **immutable** → use `clone()`.
-- Other ways to set headers: directly in `HttpClient`, use custom `HttpBackend`.
+## *ngFor vs @for()
+*ngFor is directive-based and needs extra code for empty states and tracking.
+@for is the new block syntax — it’s cleaner, supports @empty natively, has built-in track by, and is faster due to compiler optimizations.
 
-```ts
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const cloned = req.clone({
-      setHeaders: { Authorization: `Bearer token` }
-    });
-    return next.handle(cloned);
-  }
-}
-```
+
 
 ---
 
-## Zone.js, OnPush & Manual Change Detection, ngZone
-- **Zone.js** patches async APIs (setTimeout, promises) → triggers CD.
-- **OnPush** → skips CD unless:
-  - Input reference changes
-  - Event fired inside component
-  - `markForCheck()`/`detectChanges()` called
-- **ngZone** can be used to skip or re-enter Angular CD.
+## Why were Signals introduced?
+
+“Angular traditionally relied on zone.js and change detection to track updates, which can become inefficient for complex applications since the entire component tree might re-render even if only a small part of the state changes.
+
+Signals were introduced to provide a reactive, fine-grained state management mechanism without needing external libraries like NgRx or RxJS for simple cases. They make change detection more predictable, efficient, and developer-friendly.
+
+
 
 ---
 
-## ngZone: Run Outside Angular & Re-Enter
-```ts
-constructor(private ngZone: NgZone) {}
+## type
+- A reactive variable whose value you can read and update.
+```tsc
+import { signal } from '@angular/core';
 
-runTask() {
-  this.ngZone.runOutsideAngular(() => {
-    setTimeout(() => {
-      // Heavy work outside CD
-      this.ngZone.run(() => {
-        // Re-enter CD
-        this.value = 'done';
-      });
-    }, 1000);
-  });
-}
-```
-
----
-
-## Detecting Object Changes & Monitoring Unchanged
-Angular does **shallow reference checks**.
-- To detect deep changes: use `trackBy`, immutability, or `KeyValueDiffers`.
-
-```ts
-constructor(private differs: KeyValueDiffers) {}
-ngOnInit() {
-  this.differ = this.differs.find(this.obj).create();
-}
-ngDoCheck() {
-  const changes = this.differ.diff(this.obj);
-  if (changes) console.log('changed');
-}
-```
-
----
-
-## Changes Outside Zone
-- Use `runOutsideAngular` for performance heavy tasks.
-- To apply updates → `ngZone.run()`.
-
----
-
-## JS Comparison Operators Under the Hood
-- `==` → type coercion.
-- `===` → strict equality (no coercion).
-
-```js
-1 == "1"   // true → coercion
-1 === "1"  // false
-```
-
----
-
-## Angular Material: What & Why
-- UI Component library by Angular team.
-- Provides accessible, responsive, themable UI.
-- Saves dev time.
-
----
-
-## [1,2] == "1,2" Explanation
-- `[1,2].toString()` → `'1,2'`.
-- JS converts array to string before comparison.
-
-```js
-[1,2] == "1,2" // true
-```
-
----
-
-## forwardRef & Use Case
-- Helps resolve circular dependency issues in DI.
-
-```ts
-@Injectable()
-class AService {
-  constructor(@Inject(forwardRef(() => BService)) private b: BService) {}
-}
-
-@Injectable()
-class BService {
-  constructor(private a: AService) {}
-}
-```
-
----
-
-## ViewContainerRef & Use Case
-- Allows dynamic component creation.
-
-```ts
-constructor(private vcr: ViewContainerRef) {}
-
-load(comp: Type<any>) {
-  this.vcr.createComponent(comp);
-}
-```
-
----
-
-## APP_INITIALIZER & Use Case
-- Runs functions before app starts.
-
-```ts
-export function initApp(config: ConfigService) {
-  return () => config.load();
-}
-
-@NgModule({
-  providers: [
-    { provide: APP_INITIALIZER, useFactory: initApp, deps: [ConfigService], multi: true }
-  ]
-})
-```
-
----
-
-## Ivy Engine
-- Angular's new rendering engine.
-- Benefits:
-  - Smaller bundles
-  - Faster builds
-  - Better tree-shaking
-  - More debugging APIs
-
----
-
-## Signals, Computed Signals & Deferrable Views
-- **Signals**: Reactive primitives for state.
-- **Computed**: Derives values from signals.
-- **Effect**: Runs side-effects when signals change.
-- **@defer**: Lazy-load part of template.
-
-```ts
 count = signal(0);
-double = computed(() => this.count() * 2);
+increment() {
+  this.count.update(v => v + 1);
+}
+
+```
+
+- Computed Signal (computed)
+ Derived from one or more signals. It automatically recalculates when dependencies change.
+
+```tsc
+import { computed } from '@angular/core';
+
+doubleCount = computed(() => this.count() * 2);
+
+
+```
+-Effect (effect)
+
+Runs a side effect whenever the dependent signals change (like subscribe in RxJS).
+```tsc
+import { effect } from '@angular/core';
 
 constructor() {
-  effect(() => console.log(this.double()));
+  effect(() => {
+    console.log('Count changed:', this.count());
+  });
 }
-```
 
-```html
-@defer (on viewport) {
-  <heavy-component />
-}
 ```
 
 ---
 
-## Tracking Changed & Unchanged Objects
-Scenario: 100 objects → fetch adds 20 more.
-- Use `trackBy` in `*ngFor` for unchanged detection.
-
-```html
-<div *ngFor="let item of items; trackBy: trackById">{{ item.name }}</div>
-```
-
-```ts
-trackById(index: number, item: any) {
-  return item.id;
-}
-```
 
 - Alternative: `KeyValueDiffers`, immutability helpers, or libraries like `immer`.
 
