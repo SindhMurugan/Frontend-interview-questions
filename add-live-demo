@@ -1,0 +1,6 @@
+ng add angular-cli-ghpages
+ng build--base-href "https://SindhMurugan.github.io/Transport-Infrrd/
+git repo settings-pages-change none to main save
+npx angular-cli-ghpages --dir=dist/transport/browser
+
+utube - https://youtu.be/EWAzIUS7Knk
