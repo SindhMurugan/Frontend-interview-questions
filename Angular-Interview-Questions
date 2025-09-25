@@ -83,67 +83,38 @@ access data before hit the router
 migration old version to new
 custom router
 Do I need to declare a type for variables with let/var?
-
 Difference between let and var?
-
 Case sensitivity: can I declare number vs Number as variables?
-
 Which one is case-sensitive?
-
 Serving Angular App:
-
 How to serve Angular application?
-
 Can we change/set the base URL (e.g., /ABC) and where to configure it?
-
 Multiple Environments:
-
 How to configure multiple environments (prod, preprod, CI)?
-
 How to build Angular app for prod, preprod, CI using ng build?
-
 How to run Angular pointing to different backends (local vs server)?
-
 If pointing to server, how does Angular know which backend to use?
-
 What errors happen when backend switching fails (CORS, 404, etc.)?
-
 Angular Modules (Core vs Shared):
-
 Difference between CoreModule and SharedModule?
-
 Which one is best for services and components?
-
 If a service is in root and I import SharedModule everywhere, will it create 1 instance or multiple?
-
 If I import SharedModule in A, B, C modules, will the service create one object or multiple?
-
 Change Detection:
-
 Default strategy re-runs entire component tree → performance issue?
-
 If I mutate an object property (e.g., user.age = 26), will change detection run or not?
-
 Does CD run even if UI doesn’t update (OnPush vs Default)?
-
 Can I trigger change detection manually? (You meant ChangeDetectorRef)
-
 When to use markForCheck, detectChanges, detach, reattach?
-
 Lifecycle Hooks:
-
 When should we use ngOnInit, ngAfterViewInit, ngAfterContentInit, and ngDoCheck?
-
 Difference between @ViewChild and @ContentChild?
-
 Do we need to declare the child component before using it with @ViewChild?
 dynamic programming - A dynamic function in JavaScript is a function that is created at runtime instead of being written directly in the source code.
 how to maintain the session
-sap
+sap - A Single Page Application (SPA) is a web app that loads a single HTML page and dynamically updates content as the user interacts with it, without reloading the entire page from the server.
 how to handle array
 hashloading ,preloading
-
 Parent–Child Example:
-
 Parent has <p> tag and also includes Child component for header — how to set it up?
 
