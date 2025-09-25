@@ -137,6 +137,10 @@ When should we use ngOnInit, ngAfterViewInit, ngAfterContentInit, and ngDoCheck?
 Difference between @ViewChild and @ContentChild?
 
 Do we need to declare the child component before using it with @ViewChild?
+dynamic programming
+how to maintain the session
+sap
+how to handle array
 
 Parent–Child Example:
 
