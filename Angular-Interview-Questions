@@ -122,5 +122,9 @@ ngonchnages when it will trigger
 how deactive guard working
 u have a interface (add , delete) i want to use interface.add when user click add button where we need to write our logic 
 pass data to grand parent
+By default → only numbers allowed
+
+After clicking a button → allow alphanumeric
+“I can achieve this by dynamically setting validators on the form control. Initially, I attach a numeric regex. When the button is clicked, I replace it with an alphanumeric regex using setValidators() and call updateValueAndValidity() so the control revalidates immediately. This way, the input rule changes dynamically.”
 
 
