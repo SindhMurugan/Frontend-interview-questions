@@ -117,4 +117,10 @@ how to handle array
 hashloading ,preloading
 Parent–Child Example:
 Parent has <p> tag and also includes Child component for header — how to set it up?
+dynamic programming
+ngonchnages when it will trigger
+how deactive guard working
+u have a interface (add , delete) i want to use interface.add when user click add button where we need to write our logic 
+pass data to grand parent
+
 
